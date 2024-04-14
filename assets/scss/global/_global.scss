@@ -1,0 +1,31 @@
+@import "./variables";
+@import "../../themes/default/vars";
+@import "./mixins";
+@import "./reset";
+@import "./grid"; 
+@import "./typography";
+@import "./form";
+@import "./dropdown";
+
+img { width:100%; }
+
+.container {
+	margin-left:auto;
+	margin-right:auto;
+	padding-left:$base-space;
+	padding-right:$base-space;
+	width:100%;
+	
+	.container { padding:0 }
+
+@media (min-width: $min-sm) { max-width:$min-sm; }
+@media (min-width: $min-md) { 
+	max-width:$min-md;
+	padding-left:$base-space*2;
+	padding-right:$base-space*2;
+}
+@media (min-width: $min-lg) { max-width:$min-lg; }
+@media (min-width: $min-xl) { max-width:$min-xl; }
+@media (min-width: $min-xxl) { max-width:$min-xxl; }
+
+}

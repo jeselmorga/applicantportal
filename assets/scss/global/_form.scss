@@ -1,0 +1,313 @@
+._ccheck {
+    border:.2rem solid $gray3;
+    width:1.8rem;
+    height:1.8rem;
+    @include borderradius(.3rem);
+    background-color: $white;
+    @include flexalignitem(center, center, '');
+
+    svg {
+        width:1rem;
+        height: auto;
+        margin-bottom:-.1rem;
+        path { fill:$white }
+    }
+
+    &.active { 
+        background-color: $gray2;
+        border-color:$gray2;
+        &._disabled { 
+            background-color: $gray4;
+            border-color:$gray4;
+        }
+    }
+
+    input[type="checkbox"] { display:none }
+}
+
+._cradio {
+    border:.2rem solid $gray3;
+    width:1.8rem;
+    height:1.8rem;
+    @include borderradius(2rem);
+    background-color: $white;
+    @include flexalignitem(center, center, '');
+
+    &:before {
+        content:'';
+        display:block;
+        width:.8rem;
+        height: .8rem;
+        @include borderradius(1rem);
+        @include transition(all 0.2s ease);
+        background-color: transparent;
+    }
+
+    &.active:before { background-color: $gray1 }
+
+    input[type="radio"] { display:none }
+}
+
+._form {
+
+    input {
+
+        &[type='tel'],
+        &[type='text'],
+        &[type='email'],
+        &[type='password'] {
+            @extend .default-inputtext;
+        }
+
+        &:disabled { 
+            background-color: $disabled;
+            color:$gray1;
+            opacity: 1;
+        }
+
+    }
+
+    select {
+        @extend .default-inputtext;
+        padding-bottom:.8rem;
+        padding-top:.8rem;
+        &:disabled { 
+            background-color: $disabled;
+            color:$gray1;
+            opacity: 1;
+        }
+    }
+
+    label {
+        display: block;
+        @include calc(margin-bottom, '#{$base-space}/2')
+    }
+
+    ._choice-grp {    
+        @include flexalignitem(center, '', '');    
+        min-height: 4rem;
+
+        span {
+            @include flexalignitem(center, space-between, '');
+            &:not(:last-child) { margin-right:$base-space }
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom:0;
+            @include calc(width, '100% - 2.8rem');
+        }
+
+    }
+
+    ._checkbox-wrap {
+        @include flexalignitem('', space-between, '');
+        label { 
+            @include calc(width, '100% - 2.8rem');
+            margin-bottom: 0;
+        }
+    }
+
+    ._form-wrapper {
+        margin: $base-space*-1 0;
+    }
+
+    ._fields {
+        padding:$base-space 0;
+
+        ._field {
+
+            &._required {
+
+                input {
+
+                    &[type='tel'],
+                    &[type='text'],
+                    &[type='email'],
+                    &[type='password'] {
+                        background-color:$required;
+                    }
+                }
+
+                select { background-color:$required }
+
+            }
+
+            &._optional {
+
+                label em {
+                    font-style: normal;
+                    color:$gray3;
+                }
+
+                input {
+
+                    &[type='tel'],
+                    &[type='text'],
+                    &[type='email'],
+                    &[type='password'] {
+                        background-color:$white;
+                    }
+
+                    &:disabled { background-color: $disabled }
+
+                }
+
+            }
+
+            &._error input {
+
+                &[type='tel'],
+                &[type='text'],
+                &[type='email'],
+                &[type='password'] {
+                    border-color:$error
+                }
+
+            }
+
+        }
+
+        &._fields_3 {
+
+            ._field { width: $col-width-4 }
+
+        }
+
+        ._err {
+            font-size:1rem;
+            @include calc(padding, '(#{$base-space}/3) 0 0 #{$base-space}');
+
+            &._err {
+                color:$error;
+            }
+
+        }
+    
+    @media (max-width:$max-md) {
+        ._field {
+            &:first-child { padding-top:0 }
+            &:last-child { padding-bottom:0 }
+        }
+    }
+
+    @media (min-width:$min-md) {
+        display: flex;
+        margin:0 $base-space*-1;
+        ._field { padding:0 $base-space }
+    }
+
+    }
+
+    ._actions {
+        margin-top:$base-space*2;
+        padding:$base-space 0;
+    }
+
+}
+
+input.datepicker {
+    background-image:url(../imgs/icon-calendar.svg);
+    background-repeat: no-repeat;
+    background-position: right $base-space center;
+}
+
+._field-group {
+    @include box(#fff, .8rem, .1rem solid $gray4);
+}
+
+._multi-add {
+
+    ._multi-add-element {
+        position:relative;
+    }
+
+    span._ma-remove,
+    & ~ ._ma-add i {
+        @include flexalignitem(center, center, '');
+        color:$primary;
+
+        svg {
+            width:1.6rem;
+            height: auto;
+            margin-right:$base-space/2;
+        }
+
+        em {
+            text-decoration: underline;
+            font-style: normal;
+        }
+
+    }
+
+    span._ma-remove {
+        position:absolute;
+        right:$base-space*2;
+        top:$base-space*2;
+        cursor: pointer;
+    }
+
+    & ~ ._ma-add {
+        cursor: pointer;
+        margin-top:$base-space*2;
+        @include flexalignitem(center, '', '');
+
+        i {
+            background: $primary;
+            @include calc(margin-right, '#{$base-space}/2')
+        }
+
+        path {
+            stroke:$white;
+        }
+
+    }
+
+}
+
+._agree-disagree {
+    @include flexalignitem('', space-between, '');
+
+    input[type="checkbox"] { display: none;}
+
+    & > div {
+        width:$base-space*2;
+        height:$base-space*2;
+        border-radius:$base-space*2;
+        @include flexalignitem(center, center, '');
+
+        svg { height:auto; }
+
+        &:not(.active) {
+            background:$warning;
+            svg {
+                width:1.6rem;
+                transform:rotate(45deg);
+                path { stroke: $white}
+                &.check { display: none }
+                &.cross { display: block }
+            }
+        }
+
+        &.active {
+            background:$success;
+            svg {
+                width:1rem;
+                path {
+                    fill: $white
+                }
+                &.check { display: block }
+                &.cross { display: none }
+            }
+        }
+
+    }
+
+    label {
+        @include calc(width, '100% - (#{$base-space}*3)');
+        padding-top: $base-space/4
+    }
+
+    &:not(:last-child) { margin-bottom:$base-space }
+
+}

@@ -1,0 +1,85 @@
+._dropdown {
+
+	._dropdown-choice {
+		position: relative;
+		cursor: pointer;
+		padding:0 $base-space;
+		@include calc(padding-right, '1.4rem + (#{$base-space}*2)');
+		border:.1rem solid transparent;
+		border-bottom:0;
+		@include borderradius(.4rem .4rem 0 0);
+		height: 4rem;;
+		@include flexalignitem(center, '', '');
+
+		._arrow { 
+			width:1.6rem;
+			position:absolute;
+			right:$base-space;
+			top:50%;
+			margin-top:-.8rem;
+			@include transition(all 0.15s ease);
+		}
+
+	}
+	._dropdown-box { display:none }
+
+	&._active {
+		position: relative;
+
+		._dropdown-choice {
+			border-color:$gray4;
+			background: $white;
+
+			._arrow {
+				transform: rotate(180deg);
+			}
+
+		}
+
+		._dropdown-box { 
+			display:block;
+			position:absolute;
+			width:100%;
+			left:0;
+			background: $white;
+			@include borderradius(0 0 .4rem .4rem);
+			border:.1rem solid $gray4;
+			border-top:0;
+			z-index: 1;
+
+			ul {
+				list-style: none;
+				margin:0;
+				padding:0;
+			}
+
+			li {
+				a, span {
+					display:block;
+					@include calc(padding-top, '(#{$base-space}/3)*2');
+					@include calc(padding-bottom, '(#{$base-space}/3)*2');
+					padding-left:$base-space;
+					padding-right:$base-space;
+					color:$gray2;
+					@include transition(all 0.35s ease);
+
+					&:hover {
+						background: $gray5;
+					}
+
+				}
+				&:not(:last-child) {
+					border-bottom:.1rem solid $gray5
+				}
+
+				&._active { 
+					a, span { background:$gray5 }
+				}
+
+			}
+
+		}
+
+	}
+
+}

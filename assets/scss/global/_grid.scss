@@ -1,0 +1,44 @@
+.column-grp {
+
+	&.no-gutter {
+		margin:0;
+		[class^="col-"], [class*=" col-"] { padding:0 }
+	}
+
+@media (min-width: $min-md) {
+	margin-top: $base-space*-1;
+	margin-bottom: $base-space*-1;
+}
+
+@media (min-width: $min-md) {
+
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: $base-space*-1;
+	margin-right: $base-space*-1;
+
+}	
+
+}
+
+[class^="col-"], [class*=" col-"] { width: 100%; }
+
+
+
+[class^="col-"], [class*=" col-"] {
+	position: relative;
+
+	@media (max-width: $max-md) {
+		padding-top: $base-space;
+		padding-bottom: $base-space;
+	}
+
+	@media (min-width: $min-md) {
+		padding: $base-space;
+	}
+
+}
+
+@include gridmediabreakpoint(min-width, $min-md, "md");
+@include gridmediabreakpoint(min-width, $min-lg, "lg");
+@include gridmediabreakpoint(min-width, $min-xl, "xl");

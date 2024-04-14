@@ -1,0 +1,372 @@
+@import "./global/global";
+
+@import "./includes/boxed";
+
+._app {
+    padding:$base-space*4 0;
+}
+
+._client {
+    text-align: center;
+
+    ._logo {
+        display: block;
+        width:6.4rem;
+        margin:0 auto $base-space*2;
+
+        img { width:100% }
+
+    }
+
+    h2 { margin:0 0 $base-space/2 }
+
+    em {
+        font-style: normal;
+        @include flexalignitem(center, center, '');
+
+        img { 
+            width: 8rem;
+            margin-left:$base-space/2
+        }
+
+    }
+
+}
+
+._track { 
+    text-align: center;
+
+    ._choice {
+        @include flexalignitem(center, center, '');
+    }
+
+    ._checkbox-wrap {
+        border:.1rem solid lighten($warning, 20%);
+        border-radius:.4rem;
+        @include flexalignitem(center, space-between, '');
+        padding:$base-space;
+        background:lighten($warning, 32.5%);
+        text-align: left;
+        ._ccheck {  width:1.8rem }
+        label { @include calc(width, '100% - (1.8rem + #{$base-space})')}
+    }
+
+}
+
+._steps {
+
+    ul {
+        list-style: none;
+        margin:0 auto $base-space*3;
+        padding:0;
+        @include flexalignitem(center, center, '');
+        max-width:90rem;
+    }
+
+    li {
+        width:20%;
+        position: relative;
+        color:$gray1;
+
+        span {
+            display: block;
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius:3rem;
+            border:.2rem solid $gray3;
+            position:relative;
+            margin:0 auto;
+            background:$white;
+            position: relative;
+            z-index: 1;
+
+            &:before,
+            &:after { 
+                content:'';
+                position: absolute;
+                border-radius:3rem;
+            }
+
+            &:before {
+                width:100%;
+                height:100%;
+                left:0;
+                top:0;
+                border:.2rem solid transparent;
+            }
+
+            &:after {
+                width:1.6rem;
+                height:1.6rem;
+                background:transparent;
+                left:50%;
+                top:50%;
+                margin-top:-.8rem;
+                margin-left:-.8rem;
+            }
+
+        }
+
+        &._active span {
+            border-color:$gray1;
+            background:$gray1;
+            &:before { border-color:$gray1; }
+            &:after { 
+                background:$gray1;
+                border:.2rem solid $white;
+            }
+        }
+
+        &._done span {
+            background:$primary;
+            border-color:$primary;
+            @include flexalignitem(center, center, '');
+            &:before, &:after { display: none }
+            svg { margin-right:-.1rem }
+        }
+
+        &:before,
+        &:after {
+            content:'';
+            width:50%;
+            height:.2rem;
+            background: $gray3;
+            position:absolute;
+            top:1.1rem;
+            z-index: 0;
+        }
+        &:before { left:0 }
+        &:after { right:0 }
+
+        &:first-child:before { display: none }
+        &:last-child:after { display: none }
+
+        strong { margin-top: $base-space/2; display: block }
+
+    }
+
+@media (max-width:$max-md) {
+    li  strong { display: none }
+}
+
+}
+
+._button {
+    padding:$base-space $base-space*2;
+    border-radius:.4rem;
+    border:none;
+    @include flexalignitem(center, center, '');
+
+    &._primary {
+        background:$gray1;
+        color:$white;
+
+        svg { 
+            margin-left:$base-space;
+        }
+
+        path { stroke:$white }
+
+    }
+
+    &._secondary {
+        background:$white;
+        color:$gray1;
+        border:.1rem solid $gray1;
+
+        svg { 
+            margin-right:$base-space;
+        }
+
+        path { stroke:$gray1 }
+
+    }
+
+}
+
+._actions {
+    @include flexalignitem(center, space-between, '');
+}
+
+._step-1 ._actions {
+    justify-content: flex-end;
+}
+
+._add-work-experience .add-multi-fields,
+._add-college-education-information .add-multi-fields,
+._add-highschool-education-information .add-multi-fields { 
+    @extend ._form;
+    @include flexalignitem(flex-end, '', column);
+
+    ._multi-add { 
+        width:100%;
+        counter-reset: cntr;
+
+        ._field-group h4:after {
+            counter-increment: cntr;
+            content:counter(cntr);
+            margin-left:$base-space/3
+        }
+
+    }
+
+    ._ma-add {
+        @extend ._button;
+        @extend ._button, ._secondary;
+        width:20rem;
+
+        i { background:none }
+
+        svg { margin:0 }
+
+    }
+
+    ._field-group:not(:last-child) { margin-bottom:$base-space*2 }
+
+}
+
+._info-item-grp {
+    border:.1rem solid $gray4;
+    border-radius:.8rem;
+    padding:$base-space;
+
+@media (min-width:$min-md) {
+    padding:$base-space*2;
+}
+
+}
+
+._info-wrapper {
+    
+
+    ul {
+        list-style:none;
+        margin:0;
+        padding:0;
+        width:100%;
+    }
+
+    li {
+        @include flexalignitem('', space-between, '');
+
+        strong { 
+            font-weight: normal;
+            width:13rem;
+        }
+
+        span { 
+            text-align:right;
+            @include calc(width, '100% - (13rem + #{$base-space})');
+
+            &._email {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+        }
+
+        &:not(:last-child) { padding-bottom: $base-space/2 }
+        &:not(:first-child) { padding-top: $base-space/2 }
+
+    }
+
+@media (max-width:$max-lg) {
+    ._r-col { margin-top:$base-space}
+}
+@media (msm-width:$min-sm) {
+    strong { width:20rem }
+    span { @include calc(width, '100% - (20rem + #{$base-space})'); }
+}
+@media (min-width:$min-lg) {
+    @include flexalignitem('', space-between, '');
+    ._l-col, ._r-col {
+        @include calc(width, '50% - (#{$base-space}*2)');
+    }
+}
+
+}
+
+._sig {
+    text-align: center;
+
+    span {
+        border:.1rem solid $gray3;
+        background:$gray4;
+        max-width:64rem;
+        height:16.5rem;
+        margin:0 auto $base-space;
+        display: block;
+    }
+
+    em {
+        font-style: normal;
+    }
+
+}
+
+._step-5 {
+    ._checkbox-wrap {
+        @include flexalignitem('', space-between, '');
+        ._ccheck { width:1.8rem }
+        label { @include calc(width, '100% - (1.8rem + #{$base-space})') }
+        &:not(:last-child) { margin-bottom:$base-space*2}
+    }
+}
+
+._aggreements {
+    padding-bottom:14rem;
+    background:$gray5;
+    
+    ._page-title { 
+        text-align: center;
+        position:relative;
+
+        a {
+            position:absolute;
+            left:0;
+            top:0;
+            height:100%;
+            @include flexalignitem(center, '', '');
+
+            &:hover svg path { stroke :$primary }
+
+        }
+
+    }
+
+    ._agree-action {
+        box-shadow:0 -.1rem 1.5rem rgba(0,0,0,.15);
+        position: fixed;
+        width:100%;
+        left:0;
+        bottom:0;
+        background:$white;
+        padding:$base-space*2;
+        text-align: center;
+        @include flexalignitem(center, center, '')
+    }
+
+}
+
+._complete {
+    text-align: center;
+
+    ._check {
+        width:$base-space*4;
+        height:$base-space*4;
+        border-radius:$base-space*4;
+        background:$success;
+        @include flexalignitem(center, center, '');
+        margin:0 auto $base-space*2;
+        
+        svg {
+            width:$base-space*2;
+            path { fill:$white }
+        }
+
+    }
+
+    h3 { display: block }
+
+}

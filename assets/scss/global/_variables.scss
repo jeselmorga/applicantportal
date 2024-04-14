@@ -1,0 +1,58 @@
+// Colors
+$black 		: #000;
+$white 		: #fff;
+
+$gray1 		: #202020;
+$gray2 		: #414141;
+$gray3      : #b0b0b0;
+$gray4      : #DEDEDE;
+$gray5      : #F3F6F7;
+$gray6      : #E5E5E5;
+
+$disabled   : #f6f6f6;
+$success    : #5DC567;
+$error      : #FD4F4F;
+$warning    : #F49753;
+$required   : #FEF7F1;
+$partial    : #CA53F4;
+
+// Fonts 
+$textfont	: 'Poppins', sans-serif;
+
+// Space
+$base-space : 1.2rem;
+$lr-space	: $base-space;
+$col-space 	: $base-space;
+
+// Margins
+$headings-margin-bottom 	: $base-space*2;
+$paragraph-margin-bottom 	: $base-space*2;
+
+// Minimum Breakpoints
+$min-sm 	: 576px;
+$min-md 	: 768px;
+$min-lg 	: 992px;
+$min-xl		: 1200px;
+$min-xxl	: 1320px;
+
+//Maximun Breakpoints
+$max-sm 	: 575px;
+$max-md 	: 767px;
+$max-lg 	: 991px;
+$max-xl		: 1199px;
+$max-xxl	: 1319px;
+
+//Column Widths
+$col-width-1 : 8.3333%;
+$col-width-2 : 16.6666%;
+$col-width-3 : 25%;
+$col-width-4 : 33.3333%;
+$col-width-5 : 41.6665%;
+$col-width-6 : 50%;
+$col-width-7 : 58.3333%;
+$col-width-8 : 66.6666%;
+$col-width-9 : 75%;
+$col-width-10 : 83.3334%;
+$col-width-11 : 91.6667%;
+$col-width-12 : 100%;
+$col-width-20 : 20%;

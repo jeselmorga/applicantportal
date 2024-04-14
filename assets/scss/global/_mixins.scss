@@ -1,0 +1,193 @@
+@mixin boxshadow ($bs) {
+  box-shadow: $bs;
+  -moz-box-shadow: $bs;
+  -webkit-box-shadow: $bs;
+}
+
+@mixin borderradius($br) {
+  border-radius:$br;
+  -moz-border-radius:$br;
+  -webkit-border-radius:$br;
+}
+
+@mixin borderbox {
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box;
+}
+
+@mixin bgsizecover {
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-position: cover;
+}
+
+@mixin transition($trans) {
+  transition:$trans;
+  -moz-transition:$trans;
+  -webkit-transition:$trans;
+}
+
+@mixin rotate($deg) {
+  -ms-transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+  transform: rotate($deg);
+}
+
+@mixin calc($property, $expression) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+@mixin animate($attributes) {
+  -webkit-animation:$attributes;
+  -moz-animation:$attributes;
+  animation:$attributes;
+}
+
+@mixin setcolumn($columns) {
+  -webkit-column-count: $columns;
+  -moz-column-count: $columns;
+  column-count: $columns;
+}
+
+@mixin setcolumngap($gap) {
+  -webkit-column-gap: $gap;
+  -moz-column-gap: $gap;
+  column-gap: $gap;
+}
+
+@mixin gridmediabreakpoint($type, $breakpoint, $value) {
+  @media (#{$type} : #{$breakpoint}) {
+    .col-#{$value}-1 { width : $col-width-1 }
+    .col-#{$value}-2 { width : $col-width-2 }
+    .col-#{$value}-3 { width : $col-width-3 }
+    .col-#{$value}-4 { width : $col-width-4 }
+    .col-#{$value}-5 { width : $col-width-5 }
+    .col-#{$value}-6 { width : $col-width-6 }
+    .col-#{$value}-7 { width : $col-width-7 }
+    .col-#{$value}-8 { width : $col-width-8 }
+    .col-#{$value}-9 { width : $col-width-9 }
+    .col-#{$value}-10 { width : $col-width-10 }
+    .col-#{$value}-11 { width : $col-width-11 }
+    .col-#{$value}-12 { width : $col-width-12 }
+    .col-#{$value}-20 { width : $col-width-20 }
+  }
+}
+
+@mixin variable-icon-font($icon-code) {
+  content: #{"\"\\"}#{$icon-code + "\""}
+}
+
+@mixin flexalignitem($vertical, $horizontal, $direction) {
+  display: flex;
+
+  @if $direction != "" {
+    flex-direction: $direction;
+  }
+
+  @if $vertical != "" {
+    align-items:$vertical;
+  }
+
+  @if $horizontal != "" {
+    justify-content:$horizontal;
+  }
+
+}
+
+@mixin placeholdercolor($color) {
+  &::placeholder { color:$color }
+  &:-ms-input-placeholder { color:$color }
+  &::-ms-input-placeholder { color:$color }
+}
+
+@mixin listreset($padding, $margin) {
+  padding:$padding;
+  margin:$margin;
+  list-style: none;
+}
+
+@mixin labelreset {
+  text-transform: none; 
+  font-size:1.4rem; 
+  letter-spacing: 0;
+}
+
+@mixin bubblearrow($color, $width, $xaxis, $xvalue, $yaxis, $yvalue) {
+  content: "";
+  position: absolute;
+  #{$xaxis}: $xvalue;
+  #{$yaxis}: $yvalue;
+  border-width: $width;
+  border-style: solid;
+  border-color: #{$color} transparent;
+  display: block;
+  width: 0;
+}
+
+@mixin logosymbol($width) {
+  width:$width;
+  height:$width;
+  @include flexalignitem(center, center, '');
+  background:$white;
+  @include borderradius($width);
+  padding:$base-space;
+  @include boxshadow(0 0 3.5rem rgba(79,81,253,.15));
+}
+
+@mixin box($bg, $radius, $border, $padding:$base-space*2) {
+  background:$bg;
+  @include borderradius($radius);
+  border:$border;
+  padding:$padding/2;
+
+  &._with-table ._table  {
+    @include borderradius(0);
+    border:none;
+    background-color:transparent;
+  }
+
+@media (min-width:$min-md) {
+  padding:$padding;
+}
+
+}
+
+.clearfix {
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after { clear: both; }
+
+}
+
+.squarebox,
+.semisquarebox,
+.rectanglebox {
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: "";
+    display: block;
+  }
+}
+.squarebox:before { padding-top: 100%; }
+.semisquarebox:before { padding-top: 70%; }
+.rectanglebox:before { padding-top:50%; }
+
+.default-inputtext {
+  width:100%;
+  border:.1rem solid $gray4;
+  @include borderradius(.4rem);
+  padding:1rem $base-space;
+
+  &:focus,
+  &:focus-visible {
+      outline-color:$primary
+  }
+}
