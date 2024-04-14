@@ -18,7 +18,10 @@
 
     }
 
-    h2 { margin:0 0 $base-space/2 }
+    h2 { 
+        margin:0;
+        @include calc(padding-bottom, '#{$base-space}/2');
+    }
 
     em {
         font-style: normal;
@@ -26,7 +29,7 @@
 
         img { 
             width: 8rem;
-            margin-left:$base-space/2
+            @include calc(margin-left, '#{$base-space}/2');
         }
 
     }
@@ -141,7 +144,10 @@
         &:first-child:before { display: none }
         &:last-child:after { display: none }
 
-        strong { margin-top: $base-space/2; display: block }
+        strong { 
+            @include calc(margin-top, '#{$base-space}/2');
+            display: block;
+        }
 
     }
 
@@ -205,7 +211,7 @@
         ._field-group h4:after {
             counter-increment: cntr;
             content:counter(cntr);
-            margin-left:$base-space/3
+            @include calc(margin-left, '#{$base-space}/3')
         }
 
     }
@@ -266,8 +272,8 @@
 
         }
 
-        &:not(:last-child) { padding-bottom: $base-space/2 }
-        &:not(:first-child) { padding-top: $base-space/2 }
+        &:not(:last-child) { @include calc(padding-bottom, '#{$base-space}/2') }
+        &:not(:first-child) { @include calc(padding-top, '#{$base-space}/2') }
 
     }
 

@@ -1,5 +1,6 @@
 @import "./variables";
-@import "../../themes/default/vars";
+// @import "../../themes/jollibee/vars"; // default theme *needs to be compiled in sass
+@import "../../themes/jollibee/vars";
 @import "./mixins";
 @import "./reset";
 @import "./grid"; 

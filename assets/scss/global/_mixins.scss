@@ -141,7 +141,10 @@
   background:$bg;
   @include borderradius($radius);
   border:$border;
-  padding:$padding/2;
+  @include calc(padding-top, '#{$padding}/2');
+  @include calc(padding-bottom, '#{$padding}/2');
+  @include calc(padding-left, '#{$padding}/2');
+  @include calc(padding-right, '#{$padding}/2');
 
   &._with-table ._table  {
     @include borderradius(0);
